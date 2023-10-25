@@ -15,7 +15,7 @@ function OpenAIComponent() {
 
       const getPersonalityMessage = () => {
         if (selectedPersonality === 'supportive') {
-          return 'aasdfasdfasdf tset';
+          return 'text for supportive';
         } else if (selectedPersonality === 'friendly') {
           return 'You selected the Friendly personality. Get ready for a fun and engaging conversation!';
         }
