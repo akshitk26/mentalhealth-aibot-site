@@ -83,3 +83,10 @@ input {
     padding: 10px;
     border-radius: 10%;
   }
+
+  .personality-message {
+    color: white;
+    font-size: 30px;
+    margin: 20px 300px;
+    background-color: red;
+  }

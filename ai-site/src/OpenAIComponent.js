@@ -62,7 +62,7 @@ function OpenAIComponent() {
             <div className = "personality-selector">
 
                 <label>
-                    Choose your partner:
+                    Choose Ami's personality:
                     <select 
                         value = {selectedPersonality}
                         onChange = {handlePersonalityChange}
