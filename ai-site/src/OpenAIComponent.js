@@ -18,6 +18,10 @@ function OpenAIComponent() {
           return 'text for supportive';
         } else if (selectedPersonality === 'friendly') {
           return 'You selected the Friendly personality. Get ready for a fun and engaging conversation!';
+        } else if (selectedPersonality === 'inquisitive') {
+            return 'inquisitive';
+        } else if(selectedPersonality==='motivational') {
+            return 'motivational';
         }
         // Add more personality options if needed
         return '';
@@ -69,6 +73,8 @@ function OpenAIComponent() {
                     >
                         <option value="supportive">Supportive</option>
                         <option value="friendly">Friendly</option>
+                        <option value="inquisitive">Inquisitive</option>
+                        <option value="motivational">Motivational</option>
                     </select>
                 </label>
 
