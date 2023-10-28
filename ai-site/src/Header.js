@@ -10,6 +10,7 @@ function Header() {
         <ul>
           <li><Link to="/">Chat</Link></li>
           <li><Link to="/about">About</Link></li>
+          <li><Link to="/login">Login</Link></li>
         </ul>
       </nav>
     </div>
