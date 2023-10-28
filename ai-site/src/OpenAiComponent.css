@@ -30,14 +30,13 @@ input {
 }
 
 /* adds profile pics above each message */
-
-/* .profile {
+.profile {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #ddd;
     margin-right: 10px;
-  } */
+  } 
 
   .chat {
     display: flex;
