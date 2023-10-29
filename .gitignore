@@ -3,3 +3,6 @@ node_modules/
 
 #generated files
 .bin/
+
+#specific files
+firebase.js
