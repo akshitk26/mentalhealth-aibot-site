@@ -6,3 +6,6 @@ node_modules/
 
 #specific files
 firebase.js
+
+#env vars
+.env
