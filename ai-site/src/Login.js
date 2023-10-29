@@ -1,8 +1,30 @@
 import React from 'react';
-import { auth, GoogleAuthProvider } from './firebase'; // Import auth and GoogleAuthProvider directly
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import './Login.css';
+import {auth} from './firebase'
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
+
+    const [signupEmail, setSignupEmail] = useState("");
+    const [signupPassword, setSignupPassword] = useState("");
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+
+    const register = async (e) => {
+        e.preventDefault();
+
+        try {
+            const user = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword);
+            console.log(user);
+        }   catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    const login = async () => {  };
+
   return (
     <div className='Login'>
       <div className='main'>
@@ -11,18 +33,29 @@ function Login() {
             <div className='signUpBox'>
                 <div className='formBox'>
                     <h1>Sign Up</h1>
-                    <form>
+                    <form onSubmit={register}>
+
                         <div className='inputBox'>
                             <span class='icon'></span>
-                            <input type="email" required></input>
+                            <input type="email" required
+                                onChange={(event) => {
+                                    setSignupEmail(event.target.value)
+                                    }}>        
+                            </input>
                             <label>Email</label>                          
                         </div>
+
                         <div className='inputBox'>
                             <span class='icon'></span>
-                            <input type="password" required></input>
+                            <input type="password" required 
+                                onChange={(event) => {
+                                    setSignupPassword(event.target.value)
+                                    }}>
+                            </input>
                             <label>Password</label>
                         </div>
-                        <button type='submit' class='btn' id='signupButton'>Sign Up</button>
+
+                        <button type='submit' class='btn' id='signupButton' onClick={register}>Sign Up</button>
                     </form>
                 </div>
             </div>
@@ -30,17 +63,26 @@ function Login() {
             <div className='signInBox'>
                 < div className='formBox'>
                     <h1>Login</h1>
-                    <form>
+                    <form onSubmit={register}>
+
                         <div className='inputBox'>
                             <span class='icon'></span>
-                            <input type="email" required></input>
+                            <input type="email" required
+                                onChange={(event) => {
+                                    setLoginEmail(event.target.value)
+                                    }}></input>
                             <label>Email</label>                          
                         </div>
+
                         <div className='inputBox'>
                             <span class='icon'></span>
-                            <input type="password" required></input>
+                            <input type="password" required
+                            onChange={(event) => {
+                                setLoginPassword(event.target.value)
+                                }}></input>
                             <label>Password</label>
                         </div>
+
                         <button type='submit' class='btn'id='loginButton'>Login</button>
                     </form>
                 </div>
