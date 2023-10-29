@@ -1,9 +1,9 @@
 import React from 'react';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import './Login.css';
 import {auth} from './firebase'
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
@@ -11,19 +11,37 @@ function Login() {
     const [signupPassword, setSignupPassword] = useState("");
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
+    const navigate = useNavigate();
 
     const register = async (e) => {
         e.preventDefault();
 
         try {
             const user = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword);
-            console.log(user);
+            console.log('User created: ', user);
+
+            //redierct to profile page after successful signup
+            console.log('redirecting to profile page')
+            navigate('/profile');
         }   catch (error) {
             console.log(error.message);
         }
     };
 
-    const login = async () => {  };
+    const login = async (e) => { 
+        e.preventDefault();
+
+        try {
+            const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            console.log(user);
+
+            //redierct to profile page after successful signup
+            console.log('redirecting to profile page')
+            navigate('/profile')
+        }   catch (error) {
+            console.log(error.message);
+        }
+     };
 
   return (
     <div className='Login'>
@@ -63,7 +81,7 @@ function Login() {
             <div className='signInBox'>
                 < div className='formBox'>
                     <h1>Login</h1>
-                    <form onSubmit={register}>
+                    <form onSubmit={login}>
 
                         <div className='inputBox'>
                             <span class='icon'></span>
@@ -83,7 +101,7 @@ function Login() {
                             <label>Password</label>
                         </div>
 
-                        <button type='submit' class='btn'id='loginButton'>Login</button>
+                        <button type='submit' class='btn'id='loginButton' onClick={login}>Login</button>
                     </form>
                 </div>
             </div>
