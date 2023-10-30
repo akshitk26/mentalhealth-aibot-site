@@ -96,9 +96,11 @@ function OpenAIComponent() {
                         className={`wrapper ${message.type === 'bot' && 'ai'}`}
                     >
                         <div className="chat flex">
-                            <div className="profile" >
-                                <img src='https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*' alt='Profile' />
-                            </div>
+                            {message.type === 'user' && (
+                                <div className="profile" >
+                                    <img src={profilePicture} alt='Profile' />
+                                </div>
+                            )}
                             <div className="message ml-4">{message.text}</div>
                         </div>
                     </div>

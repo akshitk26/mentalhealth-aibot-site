@@ -26,7 +26,7 @@ function ProfilePage() {
         signOut(auth);
     }
 
-    const handleUpdateProfile = async () => {
+    /* const handleUpdateProfile = async () => {
         try {
             await updateProfile(auth.currentUser, {
                 displayName: username,
@@ -41,7 +41,7 @@ function ProfilePage() {
         } catch (error) {
             console.error('Error updating profile:', error.message);
         }
-    };
+    }; */
 
     return (
         <div className='ProfilePage'>
