@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
 import './ProfilePage.css';
 import { onAuthStateChanged, getAuth, signOut, updateProfile } from 'firebase/auth';
-import { useState } from 'react';
-import { useUserState } from './userState';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+
+
 
 function ProfilePage() {
     const [user, setUser] = useState(null);
@@ -45,6 +45,7 @@ function ProfilePage() {
 
     return (
         <div className='ProfilePage'>
+
             <div>
                 {user ? ( // Check if the user is authenticated
                     <div>
