@@ -69,7 +69,7 @@ function Login() {
 
       {user ? (
                 <div className='signedInMsg'>
-                    <p>You're already logged in! If you want to sign out, head to the profile page.</p>
+                    <p>You're already logged in! If you want to sign out, head to the profile page and click 'Sign Out'.</p>
                 </div>
             ) : (
                 <div>
