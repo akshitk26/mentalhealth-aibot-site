@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './ProfilePage.css';
 import { onAuthStateChanged, getAuth, signOut, updateProfile } from 'firebase/auth';
 import { useState } from 'react';
+import { useUserState } from './userState';
 
 function ProfilePage() {
     const [user, setUser] = useState(null);

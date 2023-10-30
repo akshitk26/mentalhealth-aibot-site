@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-// import bot from "./assets/bot.svg";
-// import user from "./assets/user.svg";
-
+import { useUserState } from './userState';
 import './OpenAiComponent.css';
 
 function OpenAIComponent() {
     const [input, setInput] = useState('')
     const [selectedPersonality, setSelectedPersonality] = useState('supportive')
     const [messages, setMessages] = useState([])
+    const {profilePicture} = useUserState();
 
     const handlePersonalityChange = (event) => {
         setSelectedPersonality(event.target.value);
@@ -97,7 +96,7 @@ function OpenAIComponent() {
                         className={`wrapper ${message.type === 'bot' && 'ai'}`}
                     >
                         <div className="chat flex">
-                            <div className="profile"></div>
+                            <div className="profile" ></div>
                             <div className="message ml-4">{message.text}</div>
                         </div>
                     </div>
