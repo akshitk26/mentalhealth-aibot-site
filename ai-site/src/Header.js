@@ -5,7 +5,7 @@ import './Header.css';
 function Header() {
   return (
     <div id="header">
-      <h1>AmiAI</h1>
+      <h1>myAI</h1>
       <nav>
         <ul>
           <li><Link to="/">Chat</Link></li>

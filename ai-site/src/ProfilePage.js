@@ -7,8 +7,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 function ProfilePage() {
     const [user, setUser] = useState(null);
     const auth = getAuth();
-    const [username, setUsername] = useState("");
-    const [profilePicture, setProfilePicture] = useState("");
+    const [username, setUsername] = useState();
+    const [profilePicture, setProfilePicture] = useState();
 
     useEffect(() => {
         // Check authentication status when the component mounts
