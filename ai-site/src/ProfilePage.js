@@ -1,5 +1,5 @@
 import './ProfilePage.css';
-import { onAuthStateChanged, getAuth, signOut, updateProfile } from 'firebase/auth';
+import { onAuthStateChanged, getAuth, signOut } from 'firebase/auth';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 

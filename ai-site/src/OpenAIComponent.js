@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
-import { useUserState } from './userState';
+import React, { useState, useEffect } from 'react'
 import './OpenAiComponent.css';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
 
 function OpenAIComponent() {
     const [input, setInput] = useState('')
     const [selectedPersonality, setSelectedPersonality] = useState('supportive')
     const [messages, setMessages] = useState([])
-    const {profilePicture} = useUserState();
+    const auth = getAuth();
+    const[user, setUser] = useState(null);
+
+    useEffect(() => {
+        // Check authentication status when the component mounts
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+
+        // Clean up the subscription when the component unmounts
+        return () => unsubscribe();
+    }, [auth]);
 
     const mentalHealthResources = {
         depression: 'https://www.helpguide.org/articles/depression/i-feel-depressed.htm',
@@ -50,7 +61,7 @@ function OpenAIComponent() {
         angry: 'anger',
         mad: 'anger',
         frustrated: 'frustration',
-      };
+    };
 
     const mapFeelingToResource = (feeling) => {
         const mentalHealthResource = mapping[feeling];
@@ -99,9 +110,7 @@ function OpenAIComponent() {
                 return `${mappedKeyword}: <a href="${resourceLink}" target="_blank">${resourceLink}</a>`;
               });
         
-              const resourceResponse = `It seems like you're dealing with ${mentalHealthKeywords
-                .map((feeling) => (mapping[feeling] ? mapping[feeling] : feeling))
-                .join(', ')}. Here are some resources that might help:\n${resources.join('\n')}`;
+              const resourceResponse = `If you would like, here are some resources that might help:\n${resources.join('\n')}`;
         
             setMessages((prev) => [...prev, { type: 'bot', text: resourceResponse }]);
 
@@ -135,68 +144,78 @@ function OpenAIComponent() {
 
     return (
         <div className="container mx-auto p-4" id = "main">
+            
+            {user ? (
+                <div>
+                    {/*Personality selection */}
+                    <div className = "personality-selector">
+                        <label>
+                            Choose Ami's personality:
+                            <select 
+                                value = {selectedPersonality}
+                                onChange = {handlePersonalityChange}
+                            >
+                                <option value="supportive">Supportive</option>
+                                <option value="friendly">Friendly</option>
+                                <option value="inquisitive">Inquisitive</option>
+                                <option value="motivational">Motivational</option>
+                            </select>
+                        </label>
 
-            {/*Personality selection */}
-            <div className = "personality-selector">
-
-                <label>
-                    Choose Ami's personality:
-                    <select 
-                        value = {selectedPersonality}
-                        onChange = {handlePersonalityChange}
-                    >
-                        <option value="supportive">Supportive</option>
-                        <option value="friendly">Friendly</option>
-                        <option value="inquisitive">Inquisitive</option>
-                        <option value="motivational">Motivational</option>
-                    </select>
-                </label>
-
-            </div>
-
-            {/*Display message based on selected cohice */}
-            <div className='personality-message'>
-                <label>
-                    {getPersonalityMessage()}
-                </label>
-            </div>
-
-            <div
-                id="chat_container"
-                className="overflow-y-auto h-96 border p-4"
-            >
-                {messages.map((message, index) => (
-                    <div
-                        key={index}
-                        className={`wrapper ${message.type === 'bot' && 'ai'}`}
-                    >
-                        <div className="chat flex">
-                            {message.type === 'user' && (
-                                <div className="profile" >
-                                    <img src='https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*' alt='Profile' />
-                                </div>
-                            )}
-                            <div className="message ml-4" dangerouslySetInnerHTML={{ __html: message.text }}></div>
                         </div>
-                    </div>
-                ))}
-            </div>
 
-            <form onSubmit={handleSubmit} className="mt-4">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Express your feelings..."
-                    className="userInputBox"
-                />
-                <button
-                    type="submit"
-                    className="enterButton"
-                >
-                    Send
-                </button>
-            </form>
+                        {/*Display message based on selected cohice */}
+                    <div className='personality-message'>
+                        <label>
+                            {getPersonalityMessage()}
+                        </label>
+                    </div>
+
+                    <div
+                        id="chat_container"
+                        className="overflow-y-auto h-96 border p-4"
+                        >
+                        {messages.map((message, index) => (
+                            <div
+                                key={index}
+                                className={`wrapper ${message.type === 'bot' && 'ai'}`}
+                            >
+                                <div className="chat flex">
+                                    {message.type === 'user' && (
+                                        <div className="profile" >
+                                            <img src='https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*' alt='Profile' />
+                                        </div>
+                                    )}
+                                    <div className="message ml-4" dangerouslySetInnerHTML={{ __html: message.text }}></div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="mt-4">
+                        <input
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            placeholder="Express your feelings..."
+                            className="userInputBox"
+                        />
+                        <button
+                            type="submit"
+                            className="enterButton"
+                        >
+                            Send
+                        </button>
+                    </form>
+                </div>
+            ) : (
+                <div>
+                    <h1>Access Denied</h1>
+                    <h2>Please sign up or login to get access to this page's features</h2>
+                </div>
+            )}
+
+            
         </div>
     )
 }
