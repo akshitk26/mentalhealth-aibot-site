@@ -41,13 +41,13 @@ function OpenAIComponent() {
 
     const getPersonalityMessage = () => {
         if (selectedPersonality === 'supportive') {
-          return 'text for supportive';
+          return 'Ami will listen to your thoughts and feelings and give you moral support';
         } else if (selectedPersonality === 'friendly') {
-          return 'You selected the Friendly personality. Get ready for a fun and engaging conversation!';
+          return 'Ami will act like your friend, talking casually and taking care of you';
         } else if (selectedPersonality === 'inquisitive') {
-            return 'inquisitive';
+            return 'Ami will ask a lot of questions - perfect if you want to be heard!';
         } else if(selectedPersonality==='motivational') {
-            return 'motivational';
+            return 'Ami will be optimistic and uplifiting, and motivate you to reach your goals!';
         }
         // Add more personality options if needed
         return '';
@@ -57,7 +57,9 @@ function OpenAIComponent() {
         anxious: 'anxiety',
         sad: 'sadness',
         depressed: 'depression',
+        depression: 'depression',
         stressed: 'stress',
+        stress: 'stress',
         angry: 'anger',
         mad: 'anger',
         frustrated: 'frustration',
