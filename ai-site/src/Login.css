@@ -1,6 +1,7 @@
 .Login {
     height: 78.3vh;
     padding: 40px;
+    background-color: var(--background);
 }
 
 .main {
@@ -12,7 +13,7 @@
 
 .loginBox {
     margin: 60px;
-    background-color: white;
+    background-color: var(--primary);
     width: 80%;
     height: 500px;
     display: flex;
@@ -23,14 +24,6 @@
     justify-content: center;
     align-items: center;
 }
-
-/* .signUpBox {
-    background-color: turquoise;
-}
-
-.signInBox {
-    background-color: lavender;
-} */
 
 .signInBox, .signUpBox {
     display: flex;
@@ -48,13 +41,14 @@
 .formBox h1 {
     font-size: 2.5em;
     text-align: center;
+    color: white;
 }
 
 .inputBox {
     position: relative;
     width: 400px;
     height: 70px;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid var(--secondary);
     margin: 60px 0;
 }
 
@@ -75,6 +69,7 @@
 .inputBox input:valid~label{
     top: -1%;
     transform: scale(0.8);
+    color: white;
 }
 
 .inputBox input {
@@ -86,12 +81,13 @@
     outline: none;
     font-weight: 500;
     font-size: 1em;
+    color: white;
 }
 
 .btn {
     width: 50%;
     height: 45px;
-    border: 1px solid black;
+    border: 1px solid white;
     background-color: transparent;
     outline: none;
     border-radius: 10px;
@@ -99,12 +95,13 @@
     font-weight: 500;
     transition: 0.2s;
     font-size: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 .btn:hover {
     transform: scale(1.05);
-    background-color: red;
+    background-color: var(--secondary);
     color: white;
     border: none;
 }

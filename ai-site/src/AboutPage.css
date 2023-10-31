@@ -1,17 +1,20 @@
 .AboutPage {
-    height: 100vh;
+    height: 100%;
     padding: 40px;
+    background-color: var(--background);
 }
 
 .reasonBox, .purposeBox {
     padding: 50px 100px;
     color: white;
-    background-color: red;
+    background-color: var(--primary);
     border-radius: 40px;
     font-size: 25px;
+    margin: 60px;
+    box-shadow: 0 0 30px var(--secondary);
 }
 
 .purposeBox {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 

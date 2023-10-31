@@ -1,13 +1,4 @@
 
-colors {
-  --text: rgb(0, 0, 0);
-  --background: rgb(153, 199, 181);
-  --primary: rgb(0, 36, 66);
-  --secondary: rgb(62, 117, 84);
-  --accent: rgb(101, 154, 133);
-  
-  }
-
 input {
     border: 1px solid black;
     border-radius: 5px;
@@ -19,8 +10,9 @@ input {
     margin-top: 20px;
 }
 
+
 #chat_container {
-    background-color: rgb(0, 76, 106);
+    background-color: var(--primary);
     width: 70%;
     margin: auto;
     display: flex;
@@ -53,14 +45,14 @@ input {
   .message {
     padding: 10px;
     border-radius: 10px;
-    background-color: #e6e6e6;
+    background-color: white;
     max-width: 70%;
     font-size: 20px;
   }
 
   .ai .message {
     align-self:flex-end;
-    background-color: #64b5f6;
+    background-color: var(--accent);
     color: #fff;
     margin-left: auto;
     margin-bottom: 15px;
@@ -71,7 +63,7 @@ input {
   .personality-selector {
     margin: 20px;
     margin-top: 0px;
-    color: white;
+    color: black;
     font-size: 35px;
   }
 
@@ -88,15 +80,15 @@ input {
   }
 
   .personality-message {
-    color: white;
-    font-size: 30px;
-    margin: 20px 300px;
-    background-color: red;
+    color: black;
+    font-size: 25px;
+    margin: 50px 300px;
   }
 
   #main {
     padding: 100px;
     height: 100vh;
+    background-color: var(--background);
   }
 
   .userInputBox {
@@ -108,4 +100,8 @@ input {
     padding: 10px 20px;
     margin: 20px;
     border-radius: 20px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 0 10px var(--secondary);
   }

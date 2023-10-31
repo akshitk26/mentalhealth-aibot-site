@@ -1,6 +1,7 @@
 .ProfilePage {
     height: 69.5vh;
     padding: 80px;
+    background-color: var(--background);
 }
 
 .profile-picture {
@@ -9,6 +10,7 @@
     overflow: hidden; /* Ensure the image doesn't overflow its container */
     margin-bottom: 20px; /* Add margin for spacing */
     border-radius: 50%;
+    box-shadow: 0 0 40px var(--secondary);
   }
 
   .profile-picture img {
@@ -21,6 +23,10 @@
   .main {
     display: flex;
     flex-direction: column;
+  }
+
+  .settings h2 {
+    color: white;
   }
 
   .inputs {
@@ -42,16 +48,27 @@
   }
 
   .signOutButton {
-    margin-top: 80px;
+    margin-top: 50px;
     padding: 20px;
     border-radius: 40px;
     border: none;
     font-size: 15px;
+    background-color: var(--accent);
+    color: white;
+    transition: 0.2s;
+  }
+
+  .signOutButton:hover {
+    background-color: var(--secondary);
+    cursor: pointer;
+    scale: 1.2;
   }
 
   .settings {
-    background-color: red;
+    background-color: var(--primary);
     padding: 50px;
     width: 70%;
     border-radius: 20px;
+    box-shadow: 0 0 30px var(--secondary);
+    margin-top: 30px;
   }

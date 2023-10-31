@@ -14,8 +14,10 @@ function ProfilePage() {
         // Check authentication status when the component mounts
         const unsubscribe = onAuthStateChanged(auth, (user) => {
           setUser(user);
-          setUsername(user.displayName || '');
-          setProfilePicture(user.photoURL || '');
+          if(user) {
+            setUsername(user.displayName || '');
+            setProfilePicture(user.photoURL || '');
+          } 
         });
     
         // Clean up the subscription when the component unmounts
