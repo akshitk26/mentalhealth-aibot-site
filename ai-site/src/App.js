@@ -6,6 +6,7 @@ import OpenAIComponent from './OpenAIComponent';
 import AboutPage from './AboutPage';
 import Login from './Login';
 import ProfilePage from './ProfilePage';
+import './styles.css';
 
 function App() {
   return (
