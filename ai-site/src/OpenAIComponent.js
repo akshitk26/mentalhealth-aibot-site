@@ -188,13 +188,13 @@ function OpenAIComponent() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Express your feelings..."
-                    className="border rounded p-2 w-3/4"
+                    className="userInputBox"
                 />
                 <button
                     type="submit"
-                    className="ml-2 bg-blue-500 text-white p-2 rounded"
+                    className="enterButton"
                 >
-                    Text
+                    Send
                 </button>
             </form>
         </div>

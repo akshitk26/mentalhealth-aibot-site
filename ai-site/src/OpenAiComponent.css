@@ -96,4 +96,16 @@ input {
 
   #main {
     padding: 100px;
+    height: 100vh;
+  }
+
+  .userInputBox {
+    border: none;
+    
+  }
+
+  .enterButton {
+    padding: 10px 20px;
+    margin: 20px;
+    border-radius: 20px;
   }
